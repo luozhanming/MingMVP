@@ -109,5 +109,6 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+        delegate.onRestore(savedInstanceState);
     }
 }
