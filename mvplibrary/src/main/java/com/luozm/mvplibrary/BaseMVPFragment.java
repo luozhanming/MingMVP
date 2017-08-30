@@ -1,34 +1,19 @@
 package com.luozm.mvplibrary;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
- * Created by cdc4512 on 2017/7/19.
+ * Created by cdc4512 on 2017/8/30.
  */
 
-public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompatActivity implements IMVPView {
-
+public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment implements IMVPView {
     protected T mPresenter;
     private PresenterDelegate delegate;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutID());
-        mPresenter = createPresenter();
-        if (mPresenter instanceof PresenterDelegate) {
-            delegate = (PresenterDelegate) mPresenter;
-        } else {
-            throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
-        }
-        bindViews();
-        preCreate(savedInstanceState);
-        delegate.onCreate(savedInstanceState);
-        postCreate(savedInstanceState);
-    }
 
     protected abstract T createPresenter();
 
@@ -36,6 +21,33 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
      * Presenter onCreate方法前执行
      */
     protected void postCreate(Bundle savedInstanceState) {
+    }
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(getLayoutID(),container);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bindViews(view);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mPresenter = createPresenter();
+        if (mPresenter instanceof PresenterDelegate) {
+            delegate = (PresenterDelegate) mPresenter;
+        } else {
+            throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
+        }
+        preCreate(savedInstanceState);
+        delegate.onCreate(savedInstanceState);
+        postCreate(savedInstanceState);
     }
 
     /**
@@ -46,49 +58,47 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
 
     /**
      * 绑定界面控件
+     * @param view
      */
-    protected abstract void bindViews();
+    protected abstract void bindViews(View view);
 
 
     public <T extends View> T findView(int id) {
-        return (T) findViewById(id);
+        return (T) getActivity().findViewById(id);
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         delegate.onDestroy();
+        delegate = null;
+        mPresenter = null;
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         delegate.onStart();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         delegate.onStop();
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         delegate.onResume();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         delegate.onPause();
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        delegate.onRestart();
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -97,8 +107,7 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        delegate.onRestore(savedInstanceState);
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 }
