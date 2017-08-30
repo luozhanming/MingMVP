@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Created by cdc4512 on 2017/7/19.
@@ -18,13 +19,40 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
-        mPresenter = (T) createPresenter();
+        mPresenter = createPresenter();
         if (mPresenter instanceof PresenterDelegate) {
             delegate = (PresenterDelegate) mPresenter;
         } else {
             throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
         }
+        bindViews();
+        preCreate(savedInstanceState);
         delegate.onCreate(savedInstanceState);
+        postCreate(savedInstanceState);
+    }
+
+    protected abstract T createPresenter();
+
+    /**
+     * Presenter onCreate方法前执行
+     */
+    protected void postCreate(Bundle savedInstanceState) {
+    }
+
+    /**
+     * Presenter onCreate方法后执行
+     */
+    protected void preCreate(Bundle savedInstanceState) {
+    }
+
+    /**
+     * 绑定界面控件
+     */
+    protected abstract void bindViews();
+
+
+    public <T extends View> T findView(int id) {
+        return (T) findViewById(id);
     }
 
     @Override

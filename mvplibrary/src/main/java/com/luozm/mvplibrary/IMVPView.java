@@ -8,6 +8,5 @@ import android.support.annotation.LayoutRes;
 
 public interface IMVPView {
     @LayoutRes int getLayoutID();
-    BasePresenter createPresenter();
 
 }
