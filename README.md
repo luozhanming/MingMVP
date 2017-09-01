@@ -89,3 +89,19 @@ public class MainPresenter extends PresenterDelegate<MainContract.View> implemen
 ```
 
 4.在View层类和Presenter层类编写相关操作
+
+## 下载
+1.Maven
+  ```xml
+<dependency>
+  <groupId>com.luozm.mvplibrary</groupId>
+  <artifactId>mvplibrary</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
+2.Gradle
+```xml
+compile 'com.luozm.mvplibrary:mvplibrary:1.0.0'
+```
+
