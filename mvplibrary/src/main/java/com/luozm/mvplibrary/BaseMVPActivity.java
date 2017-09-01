@@ -32,21 +32,15 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
 
     protected abstract T createPresenter();
 
-    /**
-     * Presenter onCreate方法前执行
-     */
+
     protected void postCreate(Bundle savedInstanceState) {
     }
 
-    /**
-     * Presenter onCreate方法后执行
-     */
+
     protected void preCreate(Bundle savedInstanceState) {
     }
 
-    /**
-     * 绑定界面控件
-     */
+
     protected abstract void bindViews();
 
 

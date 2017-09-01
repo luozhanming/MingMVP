@@ -17,9 +17,7 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
 
     protected abstract T createPresenter();
 
-    /**
-     * Presenter onCreate方法前执行
-     */
+
     protected void postCreate(Bundle savedInstanceState) {
     }
 
@@ -50,16 +48,11 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
         postCreate(savedInstanceState);
     }
 
-    /**
-     * Presenter onCreate方法后执行
-     */
+
     protected void preCreate(Bundle savedInstanceState) {
     }
 
-    /**
-     * 绑定界面控件
-     * @param view
-     */
+
     protected abstract void bindViews(View view);
 
 

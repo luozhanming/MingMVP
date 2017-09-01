@@ -1,9 +1,9 @@
 # MingMVP
 超好用的Android MVP架构库，支持Presenter与UI生命周期绑定。
 
-##特性
-1.View层与Presenter层双向绑定
-2.支持Dialog、Activity、Fragment等View层
+## 特性
+* 1.View层与Presenter层双向绑定
+* 2.支持Dialog、Activity、Fragment等View层
 
 ## 用法
 1.创建UI交互接口
