@@ -19,10 +19,15 @@ public abstract class BaseMVPDialog<T extends BasePresenter> extends DialogFragm
     private PresenterDelegate delegate;
     private DialogOptions options;
 
+    /**
+     * Create Presenter for this Dialog.
+     */
     protected abstract T createPresenter();
 
 
-
+    /**
+     * You can do something after Presenter Created in this method.
+     */
     protected void postCreate(Bundle savedInstanceState) {
     }
 
@@ -59,11 +64,15 @@ public abstract class BaseMVPDialog<T extends BasePresenter> extends DialogFragm
         postCreate(savedInstanceState);
     }
 
-
+    /**
+     * You can do something before Presenter Created in this method.
+     */
     protected void preCreate(Bundle savedInstanceState) {
     }
 
-
+    /**
+     * Bind view for this activity.
+     */
     protected abstract void bindViews(View view);
 
 

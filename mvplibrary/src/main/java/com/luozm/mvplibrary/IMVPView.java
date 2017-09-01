@@ -7,6 +7,9 @@ import android.support.annotation.LayoutRes;
  */
 
 public interface IMVPView {
+    /**
+     * Specify layout id for the view content.
+     */
     @LayoutRes int getLayoutID();
 
 }

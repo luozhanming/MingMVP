@@ -15,9 +15,14 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
     protected T mPresenter;
     private PresenterDelegate delegate;
 
+    /**
+     * Create Presenter for this Activity.
+     */
     protected abstract T createPresenter();
 
-
+    /**
+     * You can do something after Presenter Created in this method.
+     */
     protected void postCreate(Bundle savedInstanceState) {
     }
 
@@ -25,7 +30,7 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutID(),container);
+        return inflater.inflate(getLayoutID(), container);
     }
 
     @Override
@@ -48,11 +53,15 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
         postCreate(savedInstanceState);
     }
 
-
+    /**
+     * You can do something before Presenter Created in this method.
+     */
     protected void preCreate(Bundle savedInstanceState) {
     }
 
-
+    /**
+     * Bind view for this fragment.
+     */
     protected abstract void bindViews(View view);
 
 

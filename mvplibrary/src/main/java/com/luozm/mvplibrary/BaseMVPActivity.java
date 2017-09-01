@@ -30,20 +30,31 @@ public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompat
         postCreate(savedInstanceState);
     }
 
+    /**
+     * Create Presenter for this Activity.
+     */
     protected abstract T createPresenter();
 
-
+    /**
+     * You can do something after Presenter Created in this method.
+     */
     protected void postCreate(Bundle savedInstanceState) {
     }
 
-
+    /**
+     * You can do something before Presenter Created in this method.
+     */
     protected void preCreate(Bundle savedInstanceState) {
     }
 
-
+    /**
+     * Bind view for this activity.
+     */
     protected abstract void bindViews();
 
-
+    /**
+     * Simple way to findView without cast the type.
+     */
     public <T extends View> T findView(int id) {
         return (T) findViewById(id);
     }
