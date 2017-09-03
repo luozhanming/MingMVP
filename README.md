@@ -115,6 +115,6 @@ allprojects {
 ```
 add this code to module build.gradle
 ```xml
-compile 'com.luozm.mvplibrary:mvplibrary:1.0.0'
+compile 'com.luozm.mvplibrary:mvplibrary:1.0.1'
 ```
 
