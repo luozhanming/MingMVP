@@ -101,7 +101,20 @@ public class MainPresenter extends PresenterDelegate<MainContract.View> implemen
 </dependency>
 ```
 2.Gradle
+
+add this code to project build.gradle
 ```xml
-compile 'com.luozm.mvplibrary:mvplibrary:1.0.0'
+allprojects {
+    repositories {
+        jcenter()
+        maven{
+            url 'https://dl.bintray.com/459557210/androidlibrary'
+        }
+    }
+}
+```
+add this code to module build.gradle
+```xml
+compile 'com.luozm.mvplibrary:mvplibrary:1.0.1'
 ```
 
