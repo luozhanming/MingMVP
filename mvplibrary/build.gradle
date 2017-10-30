@@ -10,7 +10,7 @@ ext {
     artifact = 'mvplibrary'//同上
 
     libraryDescription = 'An Android structure help developer build MVP Android application.'//项目描述
-    libraryVersion = '1.0.0'//项目版本号,只需要在每次更新的时候填写
+    libraryVersion = '1.0.1'//项目版本号,只需要在每次更新的时候填写
 
     siteUrl = 'https://github.com/luozhanming/MingMVP'
     gitUrl = 'https://github.com/luozhanming/MingMVP.git'

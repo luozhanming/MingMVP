@@ -9,20 +9,20 @@ import android.view.View;
  * Created by cdc4512 on 2017/7/19.
  */
 
-public abstract class BaseMVPActivity<T extends BasePresenter> extends AppCompatActivity implements IMVPView {
+public abstract class BaseMVPActivity<T extends IPresenter> extends AppCompatActivity implements IMVPView {
 
     protected T mPresenter;
-    private PresenterDelegate delegate;
+    private BasePresenter delegate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
         mPresenter = createPresenter();
-        if (mPresenter instanceof PresenterDelegate) {
-            delegate = (PresenterDelegate) mPresenter;
+        if (mPresenter instanceof BasePresenter) {
+            delegate = (BasePresenter) mPresenter;
         } else {
-            throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
+            throw new IllegalArgumentException("Presenter must extends BasePresenter");
         }
         bindViews();
         preCreate(savedInstanceState);

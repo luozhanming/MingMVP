@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.luozm.mvplibrary.PresenterDelegate;
+import com.luozm.mvplibrary.BasePresenter;
 
 /**
  * Created by cdc4512 on 2017/8/30.
  */
 
-public class MainPresenter extends PresenterDelegate<MainContract.View> implements MainContract.Presenter {
+public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
     public MainPresenter(Context ctx, MainContract.View v) {
         super(ctx, v);
     }

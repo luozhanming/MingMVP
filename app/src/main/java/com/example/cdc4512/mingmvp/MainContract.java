@@ -1,19 +1,19 @@
 package com.example.cdc4512.mingmvp;
 
-import com.luozm.mvplibrary.BasePresenter;
-import com.luozm.mvplibrary.BaseView;
+import com.luozm.mvplibrary.IPresenter;
+import com.luozm.mvplibrary.IView;
 
 /**
  * Created by cdc4512 on 2017/8/30.
  */
 
 public interface MainContract {
-    interface View extends BaseView{
+    interface View extends IView {
         void operationView1();
 
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends IPresenter {
         void operation1();
     }
 }

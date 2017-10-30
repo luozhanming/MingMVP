@@ -11,9 +11,9 @@ import android.view.ViewGroup;
  * Created by cdc4512 on 2017/8/30.
  */
 
-public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment implements IMVPView {
+public abstract class BaseMVPFragment<T extends IPresenter> extends Fragment implements IMVPView {
     protected T mPresenter;
-    private PresenterDelegate delegate;
+    private BasePresenter delegate;
 
     /**
      * Create Presenter for this Activity.
@@ -43,10 +43,10 @@ public abstract class BaseMVPFragment<T extends BasePresenter> extends Fragment 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mPresenter = createPresenter();
-        if (mPresenter instanceof PresenterDelegate) {
-            delegate = (PresenterDelegate) mPresenter;
+        if (mPresenter instanceof BasePresenter) {
+            delegate = (BasePresenter) mPresenter;
         } else {
-            throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
+            throw new IllegalArgumentException("Presenter must extends BasePresenter");
         }
         preCreate(savedInstanceState);
         delegate.onCreate(savedInstanceState);

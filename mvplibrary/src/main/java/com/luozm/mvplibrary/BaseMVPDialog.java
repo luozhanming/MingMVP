@@ -13,10 +13,10 @@ import android.view.WindowManager;
  * Created by cdc4512 on 2017/8/30.
  */
 
-public abstract class BaseMVPDialog<T extends BasePresenter> extends DialogFragment implements IMVPView {
+public abstract class BaseMVPDialog<T extends IPresenter> extends DialogFragment implements IMVPView {
 
     protected T mPresenter;
-    private PresenterDelegate delegate;
+    private BasePresenter delegate;
     private DialogOptions options;
 
     /**
@@ -54,10 +54,10 @@ public abstract class BaseMVPDialog<T extends BasePresenter> extends DialogFragm
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mPresenter = createPresenter();
-        if (mPresenter instanceof PresenterDelegate) {
-            delegate = (PresenterDelegate) mPresenter;
+        if (mPresenter instanceof BasePresenter) {
+            delegate = (BasePresenter) mPresenter;
         } else {
-            throw new IllegalArgumentException("Presenter must extends PresenterDelegate");
+            throw new IllegalArgumentException("Presenter must extends BasePresenter");
         }
         preCreate(savedInstanceState);
         delegate.onCreate(savedInstanceState);

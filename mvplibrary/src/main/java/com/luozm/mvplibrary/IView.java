@@ -5,5 +5,5 @@ package com.luozm.mvplibrary;
  *
  */
 
-public interface BaseView {
+public interface IView {
 }
