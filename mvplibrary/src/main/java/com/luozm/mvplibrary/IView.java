@@ -1,8 +1,7 @@
 package com.luozm.mvplibrary;
 
 /**
- * Created by luozhanming on 2017/7/19.
- *
+ * Created by luozm on 2017/12/18.
  */
 
 public interface IView {

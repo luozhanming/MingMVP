@@ -15,7 +15,6 @@ public class MainActivity extends BaseMVPActivity<MainContract.Presenter> implem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

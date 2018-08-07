@@ -2,15 +2,19 @@ package com.luozm.mvplibrary;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.IntDef;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
- * Created by cdc4512 on 2017/7/19.
+ * Base class of Presenter.
+ * Created by luozm on 2017/7/19.
  */
 
 public abstract class BasePresenter<T extends IView> {
-    protected Context mContext;
-    protected T mView;
+    private Context mContext;
+    private T mView;
 
     public BasePresenter(Context ctx, T v) {
         this.mContext = ctx;
@@ -42,5 +46,13 @@ public abstract class BasePresenter<T extends IView> {
     }
 
     public void onRestore(Bundle savedInstance) {
+    }
+
+    public T getView(){
+        return mView;
+    }
+
+    public Context getContext(){
+        return mContext;
     }
 }

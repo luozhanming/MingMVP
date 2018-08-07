@@ -3,7 +3,7 @@ package com.luozm.mvplibrary;
 import android.support.annotation.LayoutRes;
 
 /**
- * Created by cdc4512 on 2017/7/19.
+ * Created by luozm on 2017/7/19.
  */
 
 public interface IMVPView {
@@ -11,5 +11,6 @@ public interface IMVPView {
      * Specify layout id for the view content.
      */
     @LayoutRes int getLayoutID();
+
 
 }

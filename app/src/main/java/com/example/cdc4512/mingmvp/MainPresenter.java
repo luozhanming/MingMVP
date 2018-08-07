@@ -17,7 +17,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
 
     @Override
     public void operation1() {
-        mView.operationView1();
+        getView().operationView1();
     }
 
 

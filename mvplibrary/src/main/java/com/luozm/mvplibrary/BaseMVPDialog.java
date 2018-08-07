@@ -9,20 +9,27 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.lang.ref.WeakReference;
+
 /**
- * Created by cdc4512 on 2017/8/30.
+ * Base class of {@link Dialog} using MVP architecture.
+ * Created by luozm on 2017/8/30.
  */
 
 public abstract class BaseMVPDialog<T extends IPresenter> extends DialogFragment implements IMVPView {
 
     protected T mPresenter;
-    private BasePresenter delegate;
+    private WeakReference<BasePresenter> delegate;
     private DialogOptions options;
 
     /**
      * Create Presenter for this Dialog.
      */
     protected abstract T createPresenter();
+
+    protected T getPresenter(){
+        return mPresenter;
+    }
 
 
     /**
@@ -55,12 +62,12 @@ public abstract class BaseMVPDialog<T extends IPresenter> extends DialogFragment
         super.onActivityCreated(savedInstanceState);
         mPresenter = createPresenter();
         if (mPresenter instanceof BasePresenter) {
-            delegate = (BasePresenter) mPresenter;
+            delegate = new WeakReference<BasePresenter>((BasePresenter) mPresenter);
         } else {
             throw new IllegalArgumentException("Presenter must extends BasePresenter");
         }
         preCreate(savedInstanceState);
-        delegate.onCreate(savedInstanceState);
+        delegate.get().onCreate(savedInstanceState);
         postCreate(savedInstanceState);
     }
 
@@ -83,40 +90,39 @@ public abstract class BaseMVPDialog<T extends IPresenter> extends DialogFragment
     @Override
     public void onDestroy() {
         super.onDestroy();
-        delegate.onDestroy();
-        delegate = null;
+        delegate.get().onDestroy();
         mPresenter = null;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        delegate.onStart();
+        delegate.get().onStart();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        delegate.onStop();
+        delegate.get().onStop();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        delegate.onResume();
+        delegate.get().onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        delegate.onPause();
+        delegate.get().onPause();
     }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        delegate.onSave(outState);
+        delegate.get().onSave(outState);
     }
 
     @Override
