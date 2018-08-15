@@ -10,12 +10,12 @@
 ```Java
 
 public interface MainContract {
-    interface View extends BaseView{
+    interface View extends IView{
         void operationView1();
 
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends IPresenter{
         void operation1();
     }
 }
