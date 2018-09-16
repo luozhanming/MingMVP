@@ -37,7 +37,7 @@ public abstract class BaseMVPFragment<T extends IPresenter> extends Fragment imp
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(getLayoutID(), container);
+        return inflater.inflate(getLayoutID(), null);
     }
 
     @Override
