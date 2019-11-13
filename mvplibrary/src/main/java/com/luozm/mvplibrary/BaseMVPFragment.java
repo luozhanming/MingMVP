@@ -1,8 +1,8 @@
 package com.luozm.mvplibrary;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +23,7 @@ public abstract class BaseMVPFragment<T extends IPresenter> extends Fragment imp
      */
     protected abstract T createPresenter();
 
-    protected T getPresenter(){
+    protected T getPresenter() {
         return mPresenter;
     }
 

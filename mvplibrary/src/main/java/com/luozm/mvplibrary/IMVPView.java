@@ -1,6 +1,6 @@
 package com.luozm.mvplibrary;
 
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * Created by luozm on 2017/7/19.

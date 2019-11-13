@@ -2,7 +2,7 @@ package com.example.cdc4512.mingmvp;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.luozm.mvplibrary.BasePresenter;
 

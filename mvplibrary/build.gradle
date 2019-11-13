@@ -10,7 +10,7 @@ ext {
     artifact = 'mvplibrary'//同上
 
     libraryDescription = 'An Android structure help developer build MVP Android application.'//项目描述
-    libraryVersion = '1.0.4'//项目版本号,只需要在每次更新的时候填写
+    libraryVersion = '1.0.7'//项目版本号,只需要在每次更新的时候填写
 
     siteUrl = 'https://github.com/luozhanming/MingMVP'
     gitUrl = 'https://github.com/luozhanming/MingMVP.git'
@@ -26,16 +26,15 @@ ext {
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 28
+        versionCode 8
+        versionName "1.0.7"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -50,12 +49,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.+'
-    testCompile 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    testImplementation 'junit:junit:4.12'
 }
 
 apply plugin: 'com.github.dcendents.android-maven'
