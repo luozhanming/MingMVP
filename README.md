@@ -96,7 +96,7 @@ public class MainPresenter extends PresenterDelegate<MainContract.View> implemen
 <dependency>
   <groupId>com.luozm.mvplibrary</groupId>
   <artifactId>mvplibrary</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.7</version>
   <type>pom</type>
 </dependency>
 ```
@@ -115,6 +115,6 @@ allprojects {
 ```
 add this code to module build.gradle
 ```xml
-compile 'com.luozm.mvplibrary:mvplibrary:1.0.3'
+implementation 'com.luozm.mvplibrary:mvplibrary:1.0.7'
 ```
 
